@@ -3,9 +3,7 @@ layout: page
 title: Home
 ---
 
-Quick Brown Fox
-=========
-![alt text](/fox.jpg "Quick Brown Fox")
+![alt text]({{ site.baseurl }}public/images/fox.jpg "Quick Brown Fox")
 
 Create DIY keyboards without writing a line of code!
 
@@ -42,21 +40,21 @@ This project is released under Creative Commons Attribution-NonCommercial 4.0
 Let's assume that you want to hook up a simple keypad to your computer and use it as a numberpad keyboard.
 Spark Fun sell a suitable unit, https://www.sparkfun.com/products/8653, and we'll base much of this guide on that unit.
 
-![alt text](/keypad.jpg "Keypad")
+![alt text]({{ site.baseurl }}public/images/keypad.jpg "Keypad")
 
 In order to attach the keypad to your computer, you're going to need a microcontroller with a USB interface, some wire, solder and a soldering iron. You won't need to write any code, just a couple of simple configuration files.
 
 This simple number pad has seven output pins arranged in the following manner:
 
-![alt text](/matrix.png "Keypad")
+![alt text]({{ site.baseurl }}public/images/matrix.png "Keypad")
 
 The Teensy Microcontroller:
 
-![alt text](/teensy.jpg "Teensy 2")
+![alt text]({{ site.baseurl }}public/images/teensy.jpg "Teensy 2")
 
 The seven keypad pins need to be soldered to seven digital input pins on the Teensy. The following picture shows the keypad soldered to pins 14 - 20.
 
-![alt text](/keypad+teensy.jpg "Teensy & Keypad")
+![alt text]({{ site.baseurl }}public/images/keypad+teensy.jpg "Teensy & Keypad")
 
 Let's configure the software so that we can read the keypad using the microcontroller.
 
@@ -93,7 +91,7 @@ The kill pin is a safety mechanism. Grounding this pin will disable the keyboard
 
 Start the layout generator application by double-clicking the jar file. You should be presented with a GUI application. Select the directories containing your configurations files and the firmware as source and destination, respectively. Select "Pull Up" as the input mode, and "Row" as the input axis. Clicking on the 'generate' button will generate C++ code from your configurations files, and write it to the firmware directory.
 
-Open the firmware using the Teensyduino program by clicking on the qbf.ino file. The firmware uses an external library [Stacklist](http://playground.arduino.cc/Code/StackList), follow the instructions on the stacklist page to install the library. Set the board type in the Tools menu to whichever Teensy variant you are using. Also set the USB type to "Keyboard + Mouse + Joystick". Upload the firmware using the arduino application with the Teensy loader. See https://www.pjrc.com/teensy/teensyduino.html for detailed instructions on uploading to the Teensy.
+Open the firmware using the Teensyduino program by clicking on the qbf.ino file. The firmware uses a couple of external libraries [Stacklist](http://playground.arduino.cc/Code/StackList), and [Adafruit_MCP23017](https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library), follow the instructions on the linked pages to install them. Set the board type in the Tools menu to whichever Teensy variant you are using. Also set the USB type to "Keyboard + Mouse + Joystick". Upload the firmware using the arduino application with the Teensy loader. See https://www.pjrc.com/teensy/teensyduino.html for detailed instructions on uploading to the Teensy.
 
 You should now find that the keypad operates as a number pad connected to your computer.
 
@@ -129,6 +127,7 @@ The full list of built-in actions can be found in the following file: [Default K
 The default actions cover all of the normal keys you'd find on a keyboard, but it's possible to create other, custom actions to perform other tasks. We can define new actions in a file called actions.txt, alongside the layout and pins.
 
 Here are a few example custom actions:
+
 ```
 ## print "Hello"
 string hi Hello
@@ -147,7 +146,7 @@ Once you've defined a new action in the actions file, it can be referenced in th
 
 Let's leave the number pad, and look at some other possibilities...
 
-#<a name="A Simplified One-Handed Keyboard"/>
+<a name="A Simplified One-Handed Keyboard"></a>
 ####A Simplified One-Handed Keyboard
 
 A special kind of action is available, which we'll call a 'hold-and-release' action. These allow two actions to be mapped to a single keypress. The first action is activated when the key is pressed and held, the second is activated when the key is released, but only if no other keys have been pressed in the meantime, and only a short time has passed.
@@ -155,6 +154,7 @@ A special kind of action is available, which we'll call a 'hold-and-release' act
 For example, some one-handed keyboards exist that assign a dual function to the spacebar. When the spacebar is pressed, the entire contents of the keyboard are shifted to allow access to the other hand's keys. We can create a key that allows both a shift action and a normal spacebar action on the same key by using a hold-and-release action with shift and space.
 
 #####layout.txt
+
 ```
 ##Layer 1: normal left-hand
 q  w  e  r  t
@@ -169,6 +169,7 @@ p  o  i  u  y
 s_
 ```
 #####actions.txt
+
 ```
 ## A combined spacebar and layer shift action
 holdAndRelease s_ >2 sp
@@ -176,8 +177,8 @@ holdAndRelease s_ >2 sp
 
 <a name="Configuring a Switch Matrix"></a>
 ####Configuring a Switch Matrix
-Keyboards such as the number pad we've already seen use switch matrices to minimise the number of output pins that are needed to capture keypresses.
-For a great introduction to switch matrices, take a look at http://www.dribin.org/dave/keyboard/one_html/
+Keyboards, such as the number pad we've already seen, use switch matrices to minimise the number of output pins that are needed to capture keypresses.
+For a great introduction to switch matrices, take a look at [http://www.dribin.org/dave/keyboard/one_html/](http://www.dribin.org/dave/keyboard/one_html/)
 
 In the case of the number pad, the layout of the switch matrix followed the layout of the keys, that is, three columns by four rows. Often, the switch matrix will not use the same layout as the keys, to simplify the circuitry, or to reduce the number of pins needed to read the matrix. In these cases, we need to add an extra configuration file to describe the mapping between the matrix and the physical layout.
 

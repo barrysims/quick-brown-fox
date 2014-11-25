@@ -75,9 +75,7 @@
     <div class="content container">
       <div class="page">
   <h1 class="page-title">Home</h1>
-  <h1>Quick Brown Fox</h1>
-
-<p><img src="/fox.jpg" alt="alt text" title="Quick Brown Fox"></p>
+  <p><img src="public/images/fox.jpg" alt="alt text" title="Quick Brown Fox"></p>
 
 <p>Create DIY keyboards without writing a line of code!</p>
 
@@ -127,21 +125,21 @@
 <p>Let&#39;s assume that you want to hook up a simple keypad to your computer and use it as a numberpad keyboard.
 Spark Fun sell a suitable unit, https://www.sparkfun.com/products/8653, and we&#39;ll base much of this guide on that unit.</p>
 
-<p><img src="/keypad.jpg" alt="alt text" title="Keypad"></p>
+<p><img src="public/images/keypad.jpg" alt="alt text" title="Keypad"></p>
 
 <p>In order to attach the keypad to your computer, you&#39;re going to need a microcontroller with a USB interface, some wire, solder and a soldering iron. You won&#39;t need to write any code, just a couple of simple configuration files.</p>
 
 <p>This simple number pad has seven output pins arranged in the following manner:</p>
 
-<p><img src="/matrix.png" alt="alt text" title="Keypad"></p>
+<p><img src="public/images/matrix.png" alt="alt text" title="Keypad"></p>
 
 <p>The Teensy Microcontroller:</p>
 
-<p><img src="/teensy.jpg" alt="alt text" title="Teensy 2"></p>
+<p><img src="public/images/teensy.jpg" alt="alt text" title="Teensy 2"></p>
 
 <p>The seven keypad pins need to be soldered to seven digital input pins on the Teensy. The following picture shows the keypad soldered to pins 14 - 20.</p>
 
-<p><img src="/keypad+teensy.jpg" alt="alt text" title="Teensy &amp; Keypad"></p>
+<p><img src="public/images/keypad+teensy.jpg" alt="alt text" title="Teensy &amp; Keypad"></p>
 
 <p>Let&#39;s configure the software so that we can read the keypad using the microcontroller.</p>
 
@@ -177,7 +175,7 @@ kill 21
 
 <p>Start the layout generator application by double-clicking the jar file. You should be presented with a GUI application. Select the directories containing your configurations files and the firmware as source and destination, respectively. Select &quot;Pull Up&quot; as the input mode, and &quot;Row&quot; as the input axis. Clicking on the &#39;generate&#39; button will generate C++ code from your configurations files, and write it to the firmware directory.</p>
 
-<p>Open the firmware using the Teensyduino program by clicking on the qbf.ino file. The firmware uses an external library <a href="http://playground.arduino.cc/Code/StackList">Stacklist</a>, follow the instructions on the stacklist page to install the library. Set the board type in the Tools menu to whichever Teensy variant you are using. Also set the USB type to &quot;Keyboard + Mouse + Joystick&quot;. Upload the firmware using the arduino application with the Teensy loader. See https://www.pjrc.com/teensy/teensyduino.html for detailed instructions on uploading to the Teensy.</p>
+<p>Open the firmware using the Teensyduino program by clicking on the qbf.ino file. The firmware uses a couple of external libraries <a href="http://playground.arduino.cc/Code/StackList">Stacklist</a>, and <a href="https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library">Adafruit_MCP23017</a>, follow the instructions on the linked pages to install them. Set the board type in the Tools menu to whichever Teensy variant you are using. Also set the USB type to &quot;Keyboard + Mouse + Joystick&quot;. Upload the firmware using the arduino application with the Teensy loader. See https://www.pjrc.com/teensy/teensyduino.html for detailed instructions on uploading to the Teensy.</p>
 
 <p>You should now find that the keypad operates as a number pad connected to your computer.</p>
 
@@ -212,52 +210,44 @@ f7  f8  f9
 
 <p>The default actions cover all of the normal keys you&#39;d find on a keyboard, but it&#39;s possible to create other, custom actions to perform other tasks. We can define new actions in a file called actions.txt, alongside the layout and pins.</p>
 
-<p>Here are a few example custom actions:
-```</p>
+<p>Here are a few example custom actions:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">## print &quot;Hello&quot;
+string hi Hello
 
-<h2>print &quot;Hello&quot;</h2>
+## copy (ctrl-c)
+macro cp ct c
 
-<p>string hi Hello</p>
+## select word (ctrl-left, ctrl-shift-right)
+macro sw ct â sh â
 
-<h2>copy (ctrl-c)</h2>
-
-<p>macro cp ct c</p>
-
-<h2>select word (ctrl-left, ctrl-shift-right)</h2>
-
-<p>macro sw ct â sh â</p>
-
-<h2>copy word (select word, copy)</h2>
-
-<p>macro cw sw cp</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">Once you&#39;ve defined a new action in the actions file, it can be referenced in the layouts file and added to your keyboard.
-
-Let&#39;s leave the number pad, and look at some other possibilities...
-
-#&lt;a name=&quot;A Simplified One-Handed Keyboard&quot;/&gt;
-####A Simplified One-Handed Keyboard
-
-A special kind of action is available, which we&#39;ll call a &#39;hold-and-release&#39; action. These allow two actions to be mapped to a single keypress. The first action is activated when the key is pressed and held, the second is activated when the key is released, but only if no other keys have been pressed in the meantime, and only a short time has passed.
-
-For example, some one-handed keyboards exist that assign a dual function to the spacebar. When the spacebar is pressed, the entire contents of the keyboard are shifted to allow access to the other hand&#39;s keys. We can create a key that allows both a shift action and a normal spacebar action on the same key by using a hold-and-release action with shift and space.
-
-#####layout.txt
+## copy word (select word, copy)
+macro cw sw cp
 </code></pre></div>
-<h2>Layer 1: normal left-hand</h2>
+<p>Once you&#39;ve defined a new action in the actions file, it can be referenced in the layouts file and added to your keyboard.</p>
 
-<p>q  w  e  r  t
+<p>Let&#39;s leave the number pad, and look at some other possibilities...</p>
+
+<p><a name="A Simplified One-Handed Keyboard"></a></p>
+
+<h4>A Simplified One-Handed Keyboard</h4>
+
+<p>A special kind of action is available, which we&#39;ll call a &#39;hold-and-release&#39; action. These allow two actions to be mapped to a single keypress. The first action is activated when the key is pressed and held, the second is activated when the key is released, but only if no other keys have been pressed in the meantime, and only a short time has passed.</p>
+
+<p>For example, some one-handed keyboards exist that assign a dual function to the spacebar. When the spacebar is pressed, the entire contents of the keyboard are shifted to allow access to the other hand&#39;s keys. We can create a key that allows both a shift action and a normal spacebar action on the same key by using a hold-and-release action with shift and space.</p>
+
+<h5>layout.txt</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">##Layer 1: normal left-hand
+q  w  e  r  t
 a  s  d  f  g
 z  x  c  v  b
-s_</p>
+s_
 
-<h2>Layer 2: mirrored right-hand, activated when spacebar held down</h2>
-
-<p>p  o  i  u  y
+##Layer 2: mirrored right-hand, activated when spacebar held down
+p  o  i  u  y
 ;  l  k  j  h
 /  .  ,  m  n
 s_
-```</p>
-
+</code></pre></div>
 <h5>actions.txt</h5>
 <div class="highlight"><pre><code class="language-text" data-lang="text">## A combined spacebar and layer shift action
 holdAndRelease s_ &gt;2 sp
@@ -266,8 +256,8 @@ holdAndRelease s_ &gt;2 sp
 
 <h4>Configuring a Switch Matrix</h4>
 
-<p>Keyboards such as the number pad we&#39;ve already seen use switch matrices to minimise the number of output pins that are needed to capture keypresses.
-For a great introduction to switch matrices, take a look at http://www.dribin.org/dave/keyboard/one_html/</p>
+<p>Keyboards, such as the number pad we&#39;ve already seen, use switch matrices to minimise the number of output pins that are needed to capture keypresses.
+For a great introduction to switch matrices, take a look at <a href="http://www.dribin.org/dave/keyboard/one_html/">http://www.dribin.org/dave/keyboard/one_html/</a></p>
 
 <p>In the case of the number pad, the layout of the switch matrix followed the layout of the keys, that is, three columns by four rows. Often, the switch matrix will not use the same layout as the keys, to simplify the circuitry, or to reduce the number of pins needed to read the matrix. In these cases, we need to add an extra configuration file to describe the mapping between the matrix and the physical layout.</p>
 
