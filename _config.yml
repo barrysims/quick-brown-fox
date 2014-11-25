@@ -11,7 +11,7 @@ title:            'quick-brown-fox'
 tagline:          'Create custom keyboards without a line of code'
 description:      ''
 url:              http://github.com/barrysims/quick-brown-fox
-baseurl:          /quick-brown-fox
+baseurl:          /quick-brown-fox/
 
 author:
   name:           'Barry Sims'
