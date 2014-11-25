@@ -9,5 +9,5 @@ deploy:
   secret_access_key: ZLGaUMOFb3hWlW7tajPLqAHYhSXl7LvdbylEVGxfiiNsNKGY5R0ETEcbdTpEdnAOBsDAuWUiz9ALfIGTNVRpaeou1SM9B8KFqnHy5jBYqFs3Yga9OoF+vd3ihpLucNHbNwdjIja1WHjHo4J+tcXFVMtRA2Vnu4sUUs6I2Wagmno=
   bucket: "qbf"
   skip_cleanup: true
-  local-dir: build
+  local-dir: bin
   region: eu-west-1
