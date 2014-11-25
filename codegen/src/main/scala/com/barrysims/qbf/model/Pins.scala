@@ -1,0 +1,39 @@
+package com.barrysims.qbf.model
+
+case class Pins(pins: List[Pin], inputAxis: String, activeMode: String) {
+  require(List("ROW", "COL").contains(inputAxis),
+    s"Input String expected to be 'ROW' or 'COL', received '$inputAxis'")
+  require(List("INPUT", "INPUT_PULLUP").contains(activeMode),
+    s"Active mode expected to be 'INPUT' or 'INPUT_PULLUP', received '$activeMode'")
+}
+
+/**
+ * Models a microcontroller pin mapping
+ */
+abstract class Pin(val axis: String, val number: Int) {
+  def name: String
+}
+
+/**
+ * Models a pin on the teensy, used when attaching the matrix directly to the teensy
+ */
+case class TeensyPin(override val axis: String, index: Int, override val number: Int) extends Pin(axis, number) {
+  val name = s"${axis}_$index"
+}
+
+/**
+ * Models a pin on a MPC23017, used when attaching the matrix to a pin expander chip
+ *
+ * @param chip The address of the chip owning the pin
+ */
+case class ExpanderPin(override val axis: String, index: Int, override val number: Int, chip: Int) extends Pin(axis, number) {
+  val name = s"${axis}_$index"
+}
+
+/**
+ *
+ * @param number
+ */
+case class KillPin(override val number: Int) extends Pin("kill", number) {
+  val name = "kill"
+}

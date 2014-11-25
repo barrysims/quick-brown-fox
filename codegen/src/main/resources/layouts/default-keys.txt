@@ -1,0 +1,170 @@
+## A default set of keys
+
+default empty 0
+default .. 0
+
+modifier sh MODIFIERKEY_SHIFT
+modifier ct MODIFIERKEY_CTRL
+modifier al MODIFIERKEY_ALT
+modifier os MODIFIERKEY_GUI
+
+default a KEY_A
+default b KEY_B
+default c KEY_C
+default d KEY_D
+default e KEY_E
+default f KEY_F
+default g KEY_G
+default h KEY_H
+default i KEY_I
+default j KEY_J
+default k KEY_K
+default l KEY_L
+default m KEY_M
+default n KEY_N
+default o KEY_O
+default p KEY_P
+default q KEY_Q
+default r KEY_R
+default s KEY_S
+default t KEY_T
+default u KEY_U
+default v KEY_V
+default w KEY_W
+default x KEY_X
+default y KEY_Y
+default z KEY_Z
+
+macro A sh a
+macro B sh b
+macro C sh c
+macro D sh d
+macro E sh e
+macro F sh f
+macro G sh g
+macro H sh h
+macro I sh i
+macro J sh j
+macro K sh k
+macro L sh l
+macro M sh m
+macro N sh n
+macro O sh o
+macro P sh p
+macro Q sh q
+macro R sh r
+macro S sh s
+macro T sh t
+macro U sh u
+macro V sh v
+macro W sh w
+macro X sh x
+macro Y sh y
+macro Z sh z
+
+default 0 KEY_0
+default 1 KEY_1
+default 2 KEY_2
+default 3 KEY_3
+default 4 KEY_4
+default 5 KEY_5
+default 6 KEY_6
+default 7 KEY_7
+default 8 KEY_8
+default 9 KEY_9
+
+default f1 KEY_F1
+default f2 KEY_F2
+default f3 KEY_F3
+default f4 KEY_F4
+default f5 KEY_F5
+default f6 KEY_F6
+default f7 KEY_F7
+default f8 KEY_F8
+default f9 KEY_F9
+default f10 KEY_F10
+default f11 KEY_F11
+default f12 KEY_F12
+
+default en KEY_ENTER
+default es KEY_ESC
+default bs KEY_BACKSPACE
+default tb KEY_TAB
+default sp KEY_SPACE
+
+default = KEY_EQUAL
+default [ KEY_LEFT_BRACE
+default ] KEY_RIGHT_BRACE
+default \ KEY_BACKSLASH
+default ; KEY_SEMICOLON
+default ' KEY_QUOTE
+##default ~ KEY_TILDE
+default , KEY_COMMA
+default . KEY_PERIOD
+default / KEY_SLASH
+default cl KEY_CAPS_LOCK
+default in KEY_INSERT
+default ←← KEY_HOME
+default ↑↑ KEY_PAGE_UP
+default dl KEY_DELETE
+default →→ KEY_END
+default ↓↓ KEY_PAGE_DOWN
+default ← KEY_LEFT
+default → KEY_RIGHT
+default ↓ KEY_DOWN
+default ↑ KEY_UP
+
+macro { sh [
+macro } sh ]
+
+## Symbols that normally need a shift (these could also be macros)
+string < <
+string > >
+string ( (
+string ) )
+string & &
+string | |
+string ? ?
+string ! !
+string # #
+string ^ ^
+string % %
+string + +
+string _ _
+string " \"
+string @ @
+string : :
+string * *
+string - -
+string $ $
+string ` `
+string ~ ~
+
+default psc KEY_PRINTSCREEN
+default slk KEY_SCROLL_LOCK
+default pau KEY_PAUSE
+default nl KEY_NUM_LOCK
+
+## Numberpad numbers
+default k0 KEYPAD_0
+default k1 KEYPAD_1
+default k2 KEYPAD_2
+default k3 KEYPAD_3
+default k4 KEYPAD_4
+default k5 KEYPAD_5
+default k6 KEYPAD_6
+default k7 KEYPAD_7
+default k8 KEYPAD_8
+default k9 KEYPAD_9
+
+## Layer switching keys
+mode >0 0
+mode >1 1
+mode >2 2
+mode >3 3
+mode >4 4
+mode >5 5
+mode >6 6
+mode >7 7
+mode >8 8
+mode >9 9

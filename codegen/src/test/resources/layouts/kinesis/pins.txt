@@ -1,0 +1,30 @@
+## These are just dummy pin numbers,
+## I've no idea what pins are used on a
+## real Kinesis Advantage microcontroller!
+
+col 0 0
+col 1 1
+col 2 2
+col 3 3
+col 4 4
+col 5 5
+col 6 6
+col 7 7
+col 8 8
+col 9 9
+col 10 10
+col 11 11
+col 12 12
+col 13 13
+col 14 14
+
+row 0 20
+row 1 21
+row 2 22
+row 3 23
+row 4 24
+row 5 25
+row 6 26
+row 7 27
+
+kill 30

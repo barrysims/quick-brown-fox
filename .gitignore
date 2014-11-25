@@ -1,0 +1,25 @@
+# IDE project files
+
+.cache
+.classpath
+.externalToolBuilders
+.history
+.idea/
+.metadata
+.project
+.settings/
+.target
+*.iml
+*.ipr
+*.iws
+target/**
+project/target/**
+project/project/target/**
+.idea_modules
+.idea
+codegen/target/**
+codegen/project/target/**
+codegen/project/project/target/**
+firmware/qbf/Actions.h
+firmware/qbf/Layout.h
+firmware/qbf/Pins.h

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2012, 2014, Oracle and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<VBox prefHeight="450.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrysims.qbf.gui.Controller">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="450.0" prefWidth="305.0" VBox.vgrow="ALWAYS">
+      <children>
+          <Button fx:id="sourceBrowse" layoutX="13.0" layoutY="95.0" mnemonicParsing="false" onAction="#sourceBrowse" prefHeight="27.0" prefWidth="88.0" text="Source" />
+          <Button fx:id="destinationBrowse" layoutX="13.0" layoutY="130.0" mnemonicParsing="false" onAction="#destinationBrowse" prefHeight="27.0" prefWidth="88.0" text="Destination" />
+          <TextField fx:id="sourceInfo" editable="false" layoutX="109.0" layoutY="95.0" prefHeight="27.0" prefWidth="179.0" />
+          <TextField fx:id="destinationInfo" editable="false" layoutX="109.0" layoutY="130.0" prefHeight="27.0" prefWidth="179.0" />
+          <TextArea id="messages" fx:id="messages" editable="false" layoutX="14.0" layoutY="200.0" prefHeight="238.0" prefWidth="274.0" text="messages" />
+          <Button fx:id="generate" layoutX="13.0" layoutY="165.0" mnemonicParsing="false" onAction="#generate" prefHeight="25.0" prefWidth="274.0" text="Generate Code" />
+          <RadioButton id="ROW" fx:id="row" layoutX="19.0" layoutY="41.0" mnemonicParsing="false" selected="true" text="Row">
+<toggleGroup>
+<ToggleGroup fx:id="axisGroup" />
+</toggleGroup></RadioButton>
+          <RadioButton id="COL" fx:id="column" layoutX="19.0" layoutY="66.0" mnemonicParsing="false" text="Column" toggleGroup="$axisGroup" />
+          <RadioButton id="INPUT_PULLUP" fx:id="pullUp" layoutX="160.0" layoutY="41.0" mnemonicParsing="false" selected="true" text="Pull Up">
+<toggleGroup>
+<ToggleGroup fx:id="modeGroup" />
+</toggleGroup>
+          </RadioButton><RadioButton id="INPUT" fx:id="pullDown" layoutX="160.0" layoutY="66.0" mnemonicParsing="false" text="Pull Down" toggleGroup="$modeGroup" />
+          <Label layoutX="19.0" layoutY="14.0" text="Input Axis" /><Label layoutX="160.0" layoutY="14.0" text="Input Mode" />
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@app.css" />
+  </stylesheets>
+</VBox>
