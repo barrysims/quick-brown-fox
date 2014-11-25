@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      quick-brown-fox &middot; Create custom keyboards without a line of code
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          quick-brown-fox
+        </a>
+      </h1>
+      <p class="lead"></p>
+    </div>
+
+    <nav class="sidebar-nav">      
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item active" href="/">Home</a>
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="http://github.com/barrysims/quick-brown-fox/archive/v1.0.zip">Download</a>
+      <a class="sidebar-nav-item" href="http://github.com/barrysims/quick-brown-fox">GitHub project</a>
+      <span class="sidebar-nav-item">Currently v1.0</span>
+    </nav>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="page">
+  <h1 class="page-title">Home</h1>
+  <h1>Quick Brown Fox</h1>
+
+<p><img src="/fox.jpg" alt="alt text" title="Quick Brown Fox"></p>
+
+<p>Create DIY keyboards without writing a line of code!</p>
+
+<ul>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#Downloads">Downloads</a></li>
+<li><a href="#Getting%20Started">Getting Started</a>
+
+<ul>
+<li><a href="#Sample%20Config">Sample Config</a></li>
+<li><a href="#Generating%20C++%20Code">Generating C++ Code</a></li>
+<li><a href="#Adding%20a%20Second%20Layer">Adding a Second Layer</a></li>
+<li><a href="#Defining%20New%20Actions">Defining New Actions</a></li>
+<li><a href="#A%20Simplified%20One-Handed%20Keyboard">A Simplified One-Handed Keyboard</a></li>
+<li><a href="#Configuring%20a%20Switch%20Matrix">Configuring a Switch Matrix</a></li>
+</ul></li>
+</ul>
+
+<p><a name = Introduction"></a></p>
+
+<h3>Introduction</h3>
+
+<p>Quick Brown Fox is a configurable Teensyduino project that can be used to power DIY keyboards.</p>
+
+<p>The project consists of two modules:</p>
+
+<ul>
+<li>The firmware, written in C++, ready to be uploaded to a Teensy</li>
+<li>A layout generator, which allows customised layouts to be created without writing a single line of code</li>
+</ul>
+
+<p>This project is released under Creative Commons Attribution-NonCommercial 4.0</p>
+
+<p><a name = "Downloads"></a></p>
+
+<h3>Downloads</h3>
+
+<ul>
+<li><a href="https://github.com/barrysims/quickbrownfox-firmware/archive/master.zip" title="Firmware">Firmware</a></li>
+<li><a href="https://github.com/barrysims/quickbrownfox-codegen/raw/master/bin/QuickBrownFox.jar" title="Generator">Layout Generator</a></li>
+</ul>
+
+<p><a name = "Getting Started"></a></p>
+
+<h3>Getting Started</h3>
+
+<p>Let&#39;s assume that you want to hook up a simple keypad to your computer and use it as a numberpad keyboard.
+Spark Fun sell a suitable unit, https://www.sparkfun.com/products/8653, and we&#39;ll base much of this guide on that unit.</p>
+
+<p><img src="/keypad.jpg" alt="alt text" title="Keypad"></p>
+
+<p>In order to attach the keypad to your computer, you&#39;re going to need a microcontroller with a USB interface, some wire, solder and a soldering iron. You won&#39;t need to write any code, just a couple of simple configuration files.</p>
+
+<p>This simple number pad has seven output pins arranged in the following manner:</p>
+
+<p><img src="/matrix.png" alt="alt text" title="Keypad"></p>
+
+<p>The Teensy Microcontroller:</p>
+
+<p><img src="/teensy.jpg" alt="alt text" title="Teensy 2"></p>
+
+<p>The seven keypad pins need to be soldered to seven digital input pins on the Teensy. The following picture shows the keypad soldered to pins 14 - 20.</p>
+
+<p><img src="/keypad+teensy.jpg" alt="alt text" title="Teensy &amp; Keypad"></p>
+
+<p>Let&#39;s configure the software so that we can read the keypad using the microcontroller.</p>
+
+<p>We need to provide two configurations files, one to describe the layout of the keys, another to select which pins we&#39;ve chosen on the microcontroller.</p>
+
+<p><a name="Sample Config"></a></p>
+
+<h4>Sample Config</h4>
+
+<h5>layout.txt</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">1  2  3
+4  5  6
+7  8  9
+*  0  #
+</code></pre></div>
+<h5>pins.txt</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">row 1 19
+row 2 14
+row 3 15
+row 4 17
+
+col 1 18
+col 2 20
+col 3 16
+
+kill 21
+</code></pre></div>
+<p>The kill pin is a safety mechanism. Grounding this pin will disable the keyboard, which will get you out of trouble if you make changes to the firmware and the keyboard starts spewing keypresses over USB.</p>
+
+<p><a name="Generating C++ Code"></a></p>
+
+<h4>Generating C++ Code</h4>
+
+<p>Start the layout generator application by double-clicking the jar file. You should be presented with a GUI application. Select the directories containing your configurations files and the firmware as source and destination, respectively. Select &quot;Pull Up&quot; as the input mode, and &quot;Row&quot; as the input axis. Clicking on the &#39;generate&#39; button will generate C++ code from your configurations files, and write it to the firmware directory.</p>
+
+<p>Open the firmware using the Teensyduino program by clicking on the qbf.ino file. The firmware uses an external library <a href="http://playground.arduino.cc/Code/StackList">Stacklist</a>, follow the instructions on the stacklist page to install the library. Set the board type in the Tools menu to whichever Teensy variant you are using. Also set the USB type to &quot;Keyboard + Mouse + Joystick&quot;. Upload the firmware using the arduino application with the Teensy loader. See https://www.pjrc.com/teensy/teensyduino.html for detailed instructions on uploading to the Teensy.</p>
+
+<p>You should now find that the keypad operates as a number pad connected to your computer.</p>
+
+<p><a name="Adding a Second Layer"></a></p>
+
+<h4>Adding a Second Layer</h4>
+
+<p>Let&#39;s alter the layout to add function keys on a second layer. Extra layers are a common feature of ergonomic keyboards, but not usually found on standard keyboards. In order to access a second layer, we&#39;ll substitute a layer action for the * action on the lower left key.</p>
+
+<h5>layout.txt</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">## Number pad layer
+1   2   3
+4   5   6
+7   8   9
+&gt;1  0   #
+
+## Function key layer
+f1  f2  f3
+f4  f5  f6
+f7  f8  f9
+&gt;1  f10  #
+</code></pre></div>
+<p>The layer switching action is indicated by <code>&gt;1</code> Regenerating the C++ code and uploading it will produce a number pad that can send function key presses whilst the * key is held down.</p>
+
+<p>You&#39;ll notice that it&#39;s not possible to get f10 to register. This is because of a phenomenon known as &#39;masking&#39;, the * key is masking the 0 key&#39;s press. The keypad unit is only designed for single keypresses. More sophisticated keypads use diodes in the matrix to prevent masking and allow for multiple keypresses (shifted keypresses for example).</p>
+
+<p><a name="Defining New Actions"></a></p>
+
+<h4>Defining New Actions</h4>
+
+<p>The full list of built-in actions can be found in the following file: <a href="https://raw.githubusercontent.com/barrysims/quickbrownfox-codegen/master/src/main/resources/layouts/default-keys.txt" title="Default Keys">Default Keys</a></p>
+
+<p>The default actions cover all of the normal keys you&#39;d find on a keyboard, but it&#39;s possible to create other, custom actions to perform other tasks. We can define new actions in a file called actions.txt, alongside the layout and pins.</p>
+
+<p>Here are a few example custom actions:
+```</p>
+
+<h2>print &quot;Hello&quot;</h2>
+
+<p>string hi Hello</p>
+
+<h2>copy (ctrl-c)</h2>
+
+<p>macro cp ct c</p>
+
+<h2>select word (ctrl-left, ctrl-shift-right)</h2>
+
+<p>macro sw ct â sh â</p>
+
+<h2>copy word (select word, copy)</h2>
+
+<p>macro cw sw cp</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Once you&#39;ve defined a new action in the actions file, it can be referenced in the layouts file and added to your keyboard.
+
+Let&#39;s leave the number pad, and look at some other possibilities...
+
+#&lt;a name=&quot;A Simplified One-Handed Keyboard&quot;/&gt;
+####A Simplified One-Handed Keyboard
+
+A special kind of action is available, which we&#39;ll call a &#39;hold-and-release&#39; action. These allow two actions to be mapped to a single keypress. The first action is activated when the key is pressed and held, the second is activated when the key is released, but only if no other keys have been pressed in the meantime, and only a short time has passed.
+
+For example, some one-handed keyboards exist that assign a dual function to the spacebar. When the spacebar is pressed, the entire contents of the keyboard are shifted to allow access to the other hand&#39;s keys. We can create a key that allows both a shift action and a normal spacebar action on the same key by using a hold-and-release action with shift and space.
+
+#####layout.txt
+</code></pre></div>
+<h2>Layer 1: normal left-hand</h2>
+
+<p>q  w  e  r  t
+a  s  d  f  g
+z  x  c  v  b
+s_</p>
+
+<h2>Layer 2: mirrored right-hand, activated when spacebar held down</h2>
+
+<p>p  o  i  u  y
+;  l  k  j  h
+/  .  ,  m  n
+s_
+```</p>
+
+<h5>actions.txt</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">## A combined spacebar and layer shift action
+holdAndRelease s_ &gt;2 sp
+</code></pre></div>
+<p><a name="Configuring a Switch Matrix"></a></p>
+
+<h4>Configuring a Switch Matrix</h4>
+
+<p>Keyboards such as the number pad we&#39;ve already seen use switch matrices to minimise the number of output pins that are needed to capture keypresses.
+For a great introduction to switch matrices, take a look at http://www.dribin.org/dave/keyboard/one_html/</p>
+
+<p>In the case of the number pad, the layout of the switch matrix followed the layout of the keys, that is, three columns by four rows. Often, the switch matrix will not use the same layout as the keys, to simplify the circuitry, or to reduce the number of pins needed to read the matrix. In these cases, we need to add an extra configuration file to describe the mapping between the matrix and the physical layout.</p>
+
+<p>Here&#39;s a real example, this is one layer of the awesome Kinesis Advantage keyboard, along with the actual mapping file you would need to produce the correct code to drive the keyboard.</p>
+
+<h5>Kinesis Advantage</h5>
+<div class="highlight"><pre><code class="language-text" data-lang="text">es  f1  f2  f3  f4  f5  f6  f7  f8  f9  f10 f11 f12 ps  sl  pb  kp  pg
+=   1   2   3   4   5                           6   7   8   9   0   -
+tb  q   w   e   r   t                           y   u   i   o   p   ?
+cl  a   s   d   f   g                           h   j   k   l   s   \
+ls  z   x   c   v   b                           n   m   ,   .   /   rs
+    ~   \   â   â       lc  al          wn  rc      â   â   [   ]
+                    bs  dl  hm          pu  en  sp
+                            en          pd
+</code></pre></div>
+<p>The following is the matrix mapping for the Kinesis Advantage</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">## Rows
+2   2   2   1   1   1   0   0   0   3   3   3   4   4   4   5   5   5
+0   0   0   0   0   0                           4   4   4   4   4   4
+1   1   1   1   1   1                           5   5   5   5   5   5
+2   2   2   2   2   2                           6   6   6   6   6   6
+3   3   3   3   3   3                           7   7   7   7   7   7
+    4   4   4   4       6   5           7   6       3   3   3   3
+                    6   6   5           7   6   6
+                            5           7
+
+## Cols
+12  13  14  12  13  14  12  13  14  12  13  14  12  13  14  12  13  14
+0   1   2   3   4   5                           6   7   8   9   10  11
+0   1   2   3   4   5                           6   7   8   9   10  11
+0   1   2   3   4   5                           6   7   8   9   10  11
+0   1   2   3   4   5                           6   7   8   9   10  11
+    1   2   3   4       5   5           4   2       6   8   9   10
+                    3   4   3           2   1   0
+                            1           1
+</code></pre></div>
+<p>The mapping file must have two layers, the first layer gives the col numbers that each key is attached to, the second gives the row.</p>
+
+</div>
+
+    </div>
+
+  </body>
+</html>

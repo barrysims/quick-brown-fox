@@ -1,0 +1,26 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            'quick-brown-fox'
+tagline:          'Create custom keyboards without a line of code'
+description:      ''
+url:              http://github.com/barrysims/quick-brown-fox
+baseurl:          /
+
+author:
+  name:           'Barry Sims'
+  url:            http://barrysims.com
+
+paginate:         5
+
+# Custom vars
+version:          1.0
+
+github:
+  repo:           http://github.com/barrysims/quick-brown-fox
