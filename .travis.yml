@@ -1,6 +1,7 @@
 language: scala
 scala:
 - 2.10.3
+before_install: cd codegen
 deploy:
   provider: s3
   access_key_id: aCXzGlBZzeFTMur/qkD2k36dAdDrMM1Ex4DHKVKFYSem70mYmNgW1e4RNDI8qNkQY1RadU7qB55Bw1Mx0/9BDjXhJsVihIFcq4t9yHo+LYlqwZ1/QM2aoCR5FEBnbz522uJF6sOUCp7EOnQEzdGdUfF4MLB4mq/1EpFHO2p4CxQ=
