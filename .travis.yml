@@ -2,12 +2,4 @@ language: scala
 scala:
 - 2.10.4
 before_install: cd codegen
-script: sbt ++$TRAVIS_SCALA_VERSION assembly
-deploy:
-  provider: s3
-  access_key_id: aCXzGlBZzeFTMur/qkD2k36dAdDrMM1Ex4DHKVKFYSem70mYmNgW1e4RNDI8qNkQY1RadU7qB55Bw1Mx0/9BDjXhJsVihIFcq4t9yHo+LYlqwZ1/QM2aoCR5FEBnbz522uJF6sOUCp7EOnQEzdGdUfF4MLB4mq/1EpFHO2p4CxQ=
-  secret_access_key: ZLGaUMOFb3hWlW7tajPLqAHYhSXl7LvdbylEVGxfiiNsNKGY5R0ETEcbdTpEdnAOBsDAuWUiz9ALfIGTNVRpaeou1SM9B8KFqnHy5jBYqFs3Yga9OoF+vd3ihpLucNHbNwdjIja1WHjHo4J+tcXFVMtRA2Vnu4sUUs6I2Wagmno=
-  bucket: "qbf"
-  skip_cleanup: true
-  local-dir: bin
-  region: eu-west-1
+script: sbt ++$TRAVIS_SCALA_VERSION dist
