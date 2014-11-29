@@ -135,7 +135,7 @@ macro sw ct ← sh →
 
 ## copy word (select word, copy)
 macro cw sw cp
- 
+
 ```
 Once you've defined a new action in the actions file, it can be referenced in the layouts file and added to your keyboard.
 

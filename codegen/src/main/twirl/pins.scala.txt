@@ -43,9 +43,8 @@ TeensyPin @(pin.name) = TeensyPin(@(pin.number));}
 
 @* Initialise Statements *@
 void pins() {
-
-    pins0.begin();
-    pins1.begin(1);
+@if(pins.expander0){pins0.begin();}
+@if(pins.expander1){pins1.begin(1);}
 
 @for(pin <- expanderPins) {
     pins@(pin.chip).pinMode(@pin.number, @if(pins.inputAxis == pin.axis.toUpperCase) {INPUT} else {OUTPUT});}

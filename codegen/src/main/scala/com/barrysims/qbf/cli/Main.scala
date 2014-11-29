@@ -27,8 +27,12 @@ object Main {
   def main(args: Array[String]) {
 
     val conf = new Conf(args)
-    val files = new File(conf.src()).listFiles()
-    val sourceBundle: SourceBundle[File] = files.collect { case f if f.getName != ".git" => f.getName.replaceFirst("[.][^.]+$", "") -> f }.toMap
+    val dir = new File(conf.src())
+    if (dir == null) { println("Directory not found at " + conf.src()); return }
+    val files = dir.listFiles()
+    if (files == null || files.length == 0) { println("No source files found at " + conf.src()); return }
+    val sourceBundle: SourceBundle[File] =
+      files.collect { case f if f.getName != ".git" => f.getName.replaceFirst("[.][^.]+$", "") -> f }.toMap
 
     try {
       CodeGenerator(

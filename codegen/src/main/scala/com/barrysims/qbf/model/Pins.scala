@@ -1,10 +1,25 @@
 package com.barrysims.qbf.model
 
-case class Pins(pins: List[Pin], inputAxis: String, activeMode: String) {
+case class Pins private (pins: List[Pin],
+                inputAxis: String,
+                activeMode: String,
+                expander0: Boolean,
+                expander1: Boolean) {
   require(List("ROW", "COL").contains(inputAxis),
     s"Input String expected to be 'ROW' or 'COL', received '$inputAxis'")
   require(List("INPUT", "INPUT_PULLUP").contains(activeMode),
     s"Active mode expected to be 'INPUT' or 'INPUT_PULLUP', received '$activeMode'")
+}
+
+object Pins {
+  def apply(pins: List[Pin],
+            inputAxis: String,
+            activeMode: String): Pins = {
+    val expander = (chip: Int) => pins exists {case p: ExpanderPin if p.chip == chip => true; case _ => false}
+    println(expander(0))
+    println(expander(1))
+    Pins(pins, inputAxis, activeMode, expander(0), expander(1))
+  }
 }
 
 /**

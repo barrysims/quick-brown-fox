@@ -13,7 +13,6 @@ object ReadWriteUtil {
   codec.onMalformedInput(CodingErrorAction.REPLACE)
   codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
 
-
   type ConfigReader[S] = S => List[String]
   type SourceWriter[D] = String => String => D
 

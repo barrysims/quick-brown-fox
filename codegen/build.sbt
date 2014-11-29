@@ -1,5 +1,7 @@
 import AssemblyKeys._
 
+import com.typesafe.sbt.SbtGit._
+
 name := "Quick Brown Fox"
 
 version := "0.1-SNAPSHOT"
@@ -27,4 +29,24 @@ ProguardKeys.options in Proguard += ProguardOptions.keepMain("com.barrysims.qbf.
 
 assemblySettings
 
-outputPath in assembly := file("./bin/QuickBrownFox.jar")
+outputPath in assembly := file("../dist/qbf-gen.jar")
+
+val packageFirmware = TaskKey[File]("packageFirmware", "zips firmware for download")
+
+packageFirmware := {
+  val files = new java.io.File("../firmware/qbf").listFiles.toList
+  val out = file("../dist/qbf.zip")
+  IO.zip(files map (f => (f, f.getName)), out)
+  out
+}
+
+val dist = TaskKey[Unit]("dist", "assembles codegen jar, zips firmware")
+
+dist := {
+  val cln = clean
+  val cmp =  compile
+  val codegen = assembly.value
+  val firmware = packageFirmware.value
+}
+
+showCurrentGitBranch
