@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/barrysims/quick-brown-fox.svg?branch=master)](https://travis-ci.org/barrysims/quick-brown-fox)
 Quick Brown Fox
 =========
 ![alt text](/fox.jpg "Quick Brown Fox")
