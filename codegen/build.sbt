@@ -29,13 +29,13 @@ ProguardKeys.options in Proguard += ProguardOptions.keepMain("com.barrysims.qbf.
 
 assemblySettings
 
-outputPath in assembly := file("../dist/qbf-gen.jar")
+outputPath in assembly := file(s"../dist/${version.value}/qbf-gen.jar")
 
 val packageFirmware = TaskKey[File]("packageFirmware", "zips firmware for download")
 
 packageFirmware := {
   val files = new java.io.File("../firmware/qbf").listFiles.toList
-  val out = file("../dist/qbf.zip")
+  val out = file(s"../dist/${version.value}/qbf.zip")
   IO.zip(files map (f => (f, f.getName)), out)
   out
 }
