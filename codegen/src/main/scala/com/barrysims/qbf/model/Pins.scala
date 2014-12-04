@@ -16,8 +16,6 @@ object Pins {
             inputAxis: String,
             activeMode: String): Pins = {
     val expander = (chip: Int) => pins exists {case p: ExpanderPin if p.chip == chip => true; case _ => false}
-    println(expander(0))
-    println(expander(1))
     Pins(pins, inputAxis, activeMode, expander(0), expander(1))
   }
 }
