@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/barrysims/quick-brown-fox.svg?branch=master)](https://travis-ci.org/barrysims/quick-brown-fox)
 Quick Brown Fox
 =========
-![alt text](/fox.jpg "Quick Brown Fox")
+![alt text](./fox.jpg "Quick Brown Fox")
 
 Create DIY keyboards without writing a line of code!
 
@@ -37,21 +37,21 @@ This project is released under Creative Commons Attribution-NonCommercial 4.0
 Let's assume that you want to hook up a simple keypad to your computer and use it as a numberpad keyboard.
 Spark Fun sell a suitable unit, https://www.sparkfun.com/products/8653, and we'll base much of this guide on that unit.
 
-![alt text](/keypad.jpg "Keypad")
+![alt text](./keypad.jpg "Keypad")
 
 In order to attach the keypad to your computer, you're going to need a microcontroller with a USB interface, some wire, solder and a soldering iron. You won't need to write any code, just a couple of simple configuration files.
 
 This simple number pad has seven output pins arranged in the following manner:
 
-![alt text](/matrix.png "Keypad")
+![alt text](./matrix.png "Keypad")
 
 The Teensy Microcontroller:
 
-![alt text](/teensy.jpg "Teensy 2")
+![alt text](./teensy.jpg "Teensy 2")
 
 The seven keypad pins need to be soldered to seven digital input pins on the Teensy. The following picture shows the keypad soldered to pins 14 - 20.
 
-![alt text](/keypad+teensy.jpg "Teensy & Keypad")
+![alt text](./keypad+teensy.jpg "Teensy & Keypad")
 
 Let's configure the software so that we can read the keypad using the microcontroller.
 
