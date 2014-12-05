@@ -17,6 +17,7 @@ void MacroAction::activate(elapsedMillis time) {
         modCode = modCode | k->modCode();
         sendModifier(modCode);
         k->activate(time);
+        if (k->modCode() == 0) k->deactivate(time);
     }
     Action::activate(time);
     clearMod = !clear;
