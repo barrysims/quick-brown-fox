@@ -11,6 +11,7 @@
 #include "DefaultAction.h"
 #include "DelayAction.h"
 #include "StringAction.h"
+#include "ShiftAction.h"
 #include "ModifierAction.h"
 #include "LayerAction.h"
 #include "HoldAndReleaseAction.h"
