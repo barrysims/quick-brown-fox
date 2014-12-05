@@ -12,7 +12,7 @@ MacroAction @{a.name} = MacroAction(@{a.name}_macro, @{a.keys.size}, @{a.clear})
 case (a: ModifierAction) => {ModifierAction @{a.name} = ModifierAction(@{a.value});}
 case (a: DefaultAction) => {DefaultAction @{a.name} = DefaultAction(@{a.value});}
 case (a: DelayAction) => {DelayAction @{a.name} = DelayAction(@{a.time});}
-case (a: StringAction) => {StringAction @{a.name} = StringAction("@{a.value}");}
+case (a: StringAction) => {StringAction @{a.name} = StringAction("@{a.value}", @{a.value.length});}
 case (a: ShiftAction) => {ShiftAction @{a.name} = ShiftAction(&@{a.action}, &@{a.shiftAction});}
 case (a: ToggleAction) => {ToggleAction @{a.name} = ToggleAction(&@{a.action});}
 case (a: ClickAction) => {ClickAction @{a.name} = ClickAction(@{a.button});}

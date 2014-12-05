@@ -147,7 +147,7 @@ void keyOff(short val) {
 /*
 * Prints a string
 */
-void printKey(String val) {
+void printKey(char val) {
     Keyboard.print(val);
 }
 

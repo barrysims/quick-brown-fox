@@ -10,13 +10,15 @@
 class StringAction: public Action {
 
   public:
-    StringAction(String _val) {
+    StringAction(char * _val, int _n) {
         val = _val;
+        n = _n;
     }
     void activate(elapsedMillis time);
 
   private:
-    String val;
+    char * val;
+    int n;
 };
 
 #endif
