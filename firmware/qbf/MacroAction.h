@@ -9,12 +9,12 @@
 class MacroAction: public Action {
 
   public:
-    MacroAction(Action ** _keys, int _n, bool _clear);
+    MacroAction(Action ** _actions, int _n, bool _clear);
     void activate(elapsedMillis time);
     void deactivate(elapsedMillis time);
 
   private:
-    Action ** keys;
+    Action ** actions;
     int n;
     bool clear;
 };

@@ -4,8 +4,8 @@ extern void sendModifier(short modCode);
 extern bool clearMod;
 extern short modifierCode;
 
-MacroAction::MacroAction(Action ** _keys, int _n, bool _clear) {
-    keys = _keys;
+MacroAction::MacroAction(Action ** _actions, int _n, bool _clear) {
+    actions = _actions;
     n = _n;
     clear = _clear;
 };
@@ -13,7 +13,7 @@ MacroAction::MacroAction(Action ** _keys, int _n, bool _clear) {
 void MacroAction::activate(elapsedMillis time) {
     short modCode = modifierCode;
     for(int i = 0; i < n; i++) {
-        Action * k = *(keys + i);
+        Action * k = *(actions + i);
         modCode = modCode | k->modCode();
         sendModifier(modCode);
         k->activate(time);
@@ -25,9 +25,9 @@ void MacroAction::activate(elapsedMillis time) {
 
 void MacroAction::deactivate(elapsedMillis time) {
     for(int i = n - 1; i >= 0; i--) {
-        Action * k = *(keys + i);
-        k->deactivate(time);
+        Action * k = *(actions + i);
+        if (k->modCode() != 0) k->deactivate(time);
     }
-    if (clear) sendModifier(0);
+    if (clear) sendModifier(0); // Not strictly correct - mod code handling needs cleaning up
     Action::deactivate(time);
 };
