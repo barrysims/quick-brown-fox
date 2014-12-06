@@ -17,6 +17,7 @@ class MacroAction: public Action {
     Action ** actions;
     int n;
     bool clear;
+    bool in(Action* actions[], Action * action, int n);
 };
 
 #endif
