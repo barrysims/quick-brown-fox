@@ -20,7 +20,7 @@ object Writer {
    */
   def write[M](model: M)(implicit w: Writable[M]): String = w.code(model)
 
-  def format(code: TxtFormat.Appendable): String = code.toString().replaceAll("""(\r?\n){2,}""", "\n\n")
+  def format(code: TxtFormat.Appendable): String = code.toString.replaceAll("""(\r?\n){2,}""", "\n\n")
 
   /**
    * Typeclass for transforming models into C++ source code
