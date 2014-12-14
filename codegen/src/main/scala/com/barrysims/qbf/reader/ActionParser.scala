@@ -21,7 +21,7 @@ object ActionParser extends Parser[Action] {
     "mode"~>name~number ^^ { case i~n => Some(LayerAction(i, n)) } |
     "modifier"~>name~value ^^ { case i~w => Some(ModifierAction(i, w)) } |
     "default"~>name~value ^^ { case i~w => Some(DefaultAction(i, w)) } |
-    "string"~>name~value ^^ { case i~s => Some(StringAction(i, s)) } |
+    "string"~>name~string ^^ { case i~s => Some(StringAction(i, s)) } |
     "toggle"~>name~name ^^ { case i~s => Some(ToggleAction(i, s)) } |
     "shift"~>name~name~name ^^ { case i~s~ss => Some(ShiftAction(i, s, ss)) } |
     "click"~>name~number ^^ { case i~n => Some(ClickAction(i, n)) }

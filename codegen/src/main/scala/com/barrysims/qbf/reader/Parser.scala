@@ -38,7 +38,7 @@ trait Parser[A] extends JavaTokenParsers {
   protected val value: Parser[String] = "[^\\s]+".r
   protected val name: Parser[String] = value ^^ { case s => s.action }
   protected val number = wholeNumber ^^ { case n => n.toInt }
-
+  protected val string = stringLiteral ^^ { case s => s.substring(1, s.length-1) } | value
 }
 
 /**
