@@ -11,11 +11,12 @@ void ShiftAction::activate(elapsedMillis time) {
         shiftVal->activateMomentarily(time);
         sendModifier(modifierCode);
     } else {
-        val->activateMomentarily(time);
+        val->activate(time);
     }
     Action::activate(time);
 }
 
 void ShiftAction::deactivate(elapsedMillis time) {
+    val->deactivate(time);
     Action::deactivate(time);
 }
