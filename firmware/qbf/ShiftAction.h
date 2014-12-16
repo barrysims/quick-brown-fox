@@ -20,6 +20,7 @@ class ShiftAction: public Action {
   private:
     Action * val;
     Action * shiftVal;
+    Action * pressedVal;
 };
 
 #endif
