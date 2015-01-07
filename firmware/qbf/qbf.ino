@@ -17,6 +17,7 @@
 #include "HoldAndReleaseAction.h"
 #include "MacroAction.h"
 #include "ToggleAction.h"
+#include "SwapCtrlSuperAction.h"
 #include "Actions.h"
 #include "Layout.h"
 
@@ -157,6 +158,12 @@ void printKey(char val) {
 void sendModifier(short modCode) {
     Keyboard.set_modifier(modCode);
     Keyboard.send_now();
+}
+
+void swapCtrlSuper() {
+    ModifierAction swap = action_c_t;
+    action_c_t = action_o_s;
+    action_o_s = swap;
 }
 
 void flash(int t) {

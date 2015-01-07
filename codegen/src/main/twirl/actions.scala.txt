@@ -2,6 +2,7 @@
 @import com.barrysims.qbf.model._
 
 DefaultAction empty = DefaultAction(0);
+SwapCtrlSuperAction c_s = SwapCtrlSuperAction();
 
 @for(action <- actions) {
 @action match {

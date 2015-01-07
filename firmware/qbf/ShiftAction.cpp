@@ -9,16 +9,16 @@ void ShiftAction::activate(elapsedMillis time) {
     if (modifierCode & MODIFIERKEY_SHIFT) {
         sendModifier(modifierCode ^ MODIFIERKEY_SHIFT);
         shiftVal->activate(time);
-        presedVal = shiftVal;
+        pressedVal = shiftVal;
     } else {
         val->activate(time);
-        presedVal = val;
+        pressedVal = val;
     }
     Action::activate(time);
 }
 
 void ShiftAction::deactivate(elapsedMillis time) {
     pressedVal->deactivate(time);
-    if (presedVal == shiftVal) sendModifier(modifierCode);
+    if (pressedVal == shiftVal) sendModifier(modifierCode);
     Action::deactivate(time);
 }
