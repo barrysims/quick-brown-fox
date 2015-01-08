@@ -1,11 +1,12 @@
 #include "LayerAction.h"
 
 extern byte activeLayer;
+extern byte defaultLayer;
 extern void flash();
 
 // todo: last/active layer
 void LayerAction::deactivate(elapsedMillis time) {
-    activeLayer = 0; // Should be lastLayer;
+    activeLayer = defaultLayer; // Should be lastLayer;
     Action::deactivate(time);
 }
 

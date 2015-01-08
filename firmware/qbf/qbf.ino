@@ -18,10 +18,12 @@
 #include "MacroAction.h"
 #include "ToggleAction.h"
 #include "SwapCtrlSuperAction.h"
+#include "SwapLayerAction.h"
 #include "Actions.h"
 #include "Layout.h"
 
-byte activeLayer = 0;
+byte defaultLayer = 0;
+byte activeLayer = defaultLayer;
 short modifierCode = 0;
 bool clearMod = false;
 Action * lastPressed;
@@ -33,7 +35,7 @@ bool looped = false;
 */
 void setup() {
     pinMode(13, OUTPUT);
-    //Serial.begin(9600);
+    Serial.begin(9600);
     pins();
 }
 
@@ -160,10 +162,58 @@ void sendModifier(short modCode) {
     Keyboard.send_now();
 }
 
+/*
+* This implementation is brittle and should be refactored to not include the names of the actions
+*/
 void swapCtrlSuper() {
     ModifierAction swap = action_c_t;
     action_c_t = action_o_s;
     action_o_s = swap;
+}
+
+/*
+* This implementation is brittle and should be refactored to not include the names of the actions
+*/
+void swapLayers(int * layerIds, int index) {
+    Serial.println("swap");
+
+    int newLayer = *(layerIds + index);
+    Serial.println(newLayer);
+    switch (* layerIds) {
+        case 0:
+            defaultLayer = newLayer;
+            activeLayer = defaultLayer;
+            break;
+        case 1:
+            action_62_1 = LayerAction(newLayer);
+            break;
+        case 2:
+            action_62_2 = LayerAction(newLayer);
+            break;
+        case 3:
+            action_62_3 = LayerAction(newLayer);
+            break;
+        case 4:
+            action_62_4 = LayerAction(newLayer);
+            break;
+        case 5:
+            action_62_5 = LayerAction(newLayer);
+            break;
+        case 6:
+            action_62_6 = LayerAction(newLayer);
+            break;
+        case 7:
+            action_62_7 = LayerAction(newLayer);
+            break;
+        case 8:
+            action_62_8 = LayerAction(newLayer);
+            break;
+        case 9:
+            action_62_9 = LayerAction(newLayer);
+            break;
+        default:
+            Serial.println("no layer match");
+    }
 }
 
 void flash(int t) {

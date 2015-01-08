@@ -168,3 +168,5 @@ mode >6 6
 mode >7 7
 mode >8 8
 mode >9 9
+
+ctrl-super c_s
