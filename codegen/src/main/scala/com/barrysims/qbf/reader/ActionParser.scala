@@ -25,6 +25,7 @@ object ActionParser extends Parser[Action] {
     "toggle"~>name~name ^^ { case i~s => Some(ToggleAction(i, s)) } |
     "shift"~>name~name~name ^^ { case i~s~ss => Some(ShiftAction(i, s, ss)) } |
     "click"~>name~number ^^ { case i~n => Some(ClickAction(i, n)) } |
-    "swap"~>name~rep(number) ^^ { case i~ns => Some(SwapLayerAction(i, ns))} |
-    "ctrl-super"~>name ^^ { case i => Some(SwapCtrlSuperAction(i))}
+    "swap"~>name~rep(number)~"leds"~rep(number) ^^ { case i~ns~x~leds => Some(SwapLayerAction(i, ns, Some(leds)))} |
+    "swap"~>name~rep(number) ^^ { case i~ns=> Some(SwapLayerAction(i, ns, None))} |
+    "ctrl-super"~>name~opt(number) ^^ { case i~led => Some(SwapCtrlSuperAction(i, led))}
 }

@@ -72,5 +72,17 @@ class ActionParserSpec extends FunSpec with Matchers {
       result should contain (DefaultAction("❖".action, "foo"))
       result should contain (MacroAction("a".action, List("b".action, "c".action, "d".action), 1))
     }
+
+    it ("should read actions with optional arguments") {
+
+      parse("ctrl-super cs 1") should equal(List(SwapCtrlSuperAction("action_c_s", Some(1))))
+      parse("ctrl-super cs") should equal(List(SwapCtrlSuperAction("action_c_s", None)))
+    }
+
+    it ("should read swap layer actions") {
+
+      parse("swap a 1 2 3") should equal(List(SwapLayerAction("action_a", List(1,2,3), None)))
+      parse("swap a 1 2 3 leds 10 11 12") should equal(List(SwapLayerAction("action_a", List(1,2,3), Some(List(10,11,12)))))
+    }
   }
 }

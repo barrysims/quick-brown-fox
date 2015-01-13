@@ -38,7 +38,7 @@ case class ToggleAction(name: String, action: String) extends Action
 case class ClickAction(name: String, button: Int) extends Action
 
 /** Swaps layers (ie, swaps out a QUERTY layer for a Dvorak layer) */
-case class SwapLayerAction(name: String, layers: List[Int]) extends Action
+case class SwapLayerAction(name: String, layers: List[Int], leds: Option[List[Int]]) extends Action
 
 /** Swaps ctrl and super */
-case class SwapCtrlSuperAction(name: String) extends Action
+case class SwapCtrlSuperAction(name: String, led: Option[Int]) extends Action
