@@ -16,6 +16,6 @@ case (a: ShiftAction) => {ShiftAction @{a.name} = ShiftAction(&@{a.action}, &@{a
 case (a: ToggleAction) => {ToggleAction @{a.name} = ToggleAction(&@{a.action});}
 case (a: ClickAction) => {ClickAction @{a.name} = ClickAction(@{a.button});}
 case (a: SwapLayerAction) => {int @{a.name}_layers[@{a.layers.size}] = {@{a.layers.mkString(", ")}};
-SwapLayerAction @{a.name} = SwapLayerAction(@{a.name}_layers, @{a.layers.size});}
-case (a: SwapCtrlSuperAction) => {SwapCtrlSuperAction @{a.name} = SwapCtrlSuperAction();}
+SwapLayerAction @{a.name} = SwapLayerAction(@{a.name}_layers, @{a.layers.size}, @{a.leds.getOrElse(Nil).mkString(", ")});}
+case (a: SwapCtrlSuperAction) => {SwapCtrlSuperAction @{a.name} = SwapCtrlSuperAction(@{a.led.getOrElse(-1)};}
 }}

@@ -8,7 +8,6 @@ import scala.language.implicitConversions
  *
  * Scala's parser-combinators are trait-based,
  * which introduces quite a lot of object-orientation into the code.
- *
  * This is at odds with the more functional approach taken elsewhere.
  */
 trait Parser[A] extends JavaTokenParsers {
