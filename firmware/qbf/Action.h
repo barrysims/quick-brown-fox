@@ -20,6 +20,7 @@ class Action {
     virtual void activateOnTimer(elapsedMillis time) {}
     virtual void activateMomentarily(elapsedMillis time) {
       activate(time);
+      delay(5);
       deactivate(time);
     }
     virtual void activate(elapsedMillis time);
