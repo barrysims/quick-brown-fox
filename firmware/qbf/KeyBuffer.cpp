@@ -49,7 +49,7 @@ void KeyBuffer::updateOnRelease(Key * key) {
 
         while (!before.isEmpty()) {
             updateKey(before.pop());
-            delay(5);
+            delay(1);
         }
 
         activateMomentarily(key);

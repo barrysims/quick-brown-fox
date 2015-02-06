@@ -40,6 +40,7 @@ void HoldAndReleaseAction::activateOnTimer(elapsedMillis time) {
 void HoldAndReleaseAction::activateMomentarily(elapsedMillis time) {
     releaseAction->activate(time);
     Action::activate(time);
+    delay(1);
     releaseAction->deactivate(time);
     Action::deactivate(time);
 }
