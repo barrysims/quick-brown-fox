@@ -98,7 +98,7 @@ default ] KEY_RIGHT_BRACE
 default \ KEY_BACKSLASH
 default ; KEY_SEMICOLON
 default ' KEY_QUOTE
-##default ~ KEY_TILDE
+default ~ KEY_TILDE
 default , KEY_COMMA
 default . KEY_PERIOD
 default / KEY_SLASH
