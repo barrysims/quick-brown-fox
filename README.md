@@ -4,18 +4,9 @@ Quick Brown Fox
 
 Create DIY keyboards without writing a line of code!
 
-* [Introduction](#Introduction)
-* [Downloads](#Downloads)
-* [Getting Started](#Getting Started)
-    * [Sample Config](#Sample Config)
-    * [Generating C++ Code](#Generating C++ Code)
-    * [Adding a Second Layer](#Adding a Second Layer)
-    * [Defining New Actions](#Defining New Actions)
-    * [A Simplified One-Handed Keyboard](#A Simplified One-Handed Keyboard)
-    * [Configuring a Switch Matrix](#Configuring a Switch Matrix)
+(Please note, this is an older project using an imperative style of scala code. I don't write code like this anymore, see [swat](https://github.com/barrysims/swat "swat") for the more functional style that I prefer now.)
 
-#<a name = "Introduction"/>
-###Introduction
+### Introduction
 Quick Brown Fox is a configurable Teensyduino project that can be used to power DIY keyboards.
 
 The project consists of two modules:
@@ -24,14 +15,12 @@ The project consists of two modules:
 
 This project is released under Creative Commons Attribution-NonCommercial 4.0
 
-#<a name = "Downloads"/>
-###Downloads
+### Downloads
 
 * [Firmware](https://github.com/barrysims/quickbrownfox-firmware/archive/master.zip "Firmware")
 * [Layout Generator](https://github.com/barrysims/quickbrownfox-codegen/raw/master/bin/QuickBrownFox.jar "Generator")
 
-#<a name = "Getting Started"/>
-###Getting Started
+### Getting Started
 
 Let's assume that you want to hook up a simple keypad to your computer and use it as a numberpad keyboard.
 Spark Fun sell a suitable unit, https://www.sparkfun.com/products/8653, and we'll base much of this guide on that unit.
@@ -56,17 +45,16 @@ Let's configure the software so that we can read the keypad using the microcontr
 
 We need to provide two configurations files, one to describe the layout of the keys, another to select which pins we've chosen on the microcontroller.
 
-#<a name="Sample Config"/>
-####Sample Config
+#### Sample Config
 
-#####layout.txt
+##### layout.txt
 ```
 1  2  3
 4  5  6
 7  8  9
 *  0  #
 ```
-#####pins.txt
+##### pins.txt
 ```
 row 1 19
 row 2 14
@@ -82,8 +70,7 @@ kill 21
 
 The kill pin is a safety mechanism. Grounding this pin will disable the keyboard, which will get you out of trouble if you make changes to the firmware and the keyboard starts spewing keypresses over USB.
 
-#<a name="Generating C++ Code"/>
-####Generating C++ Code
+#### Generating C++ Code
 
 Start the layout generator application by double-clicking the jar file. You should be presented with a GUI application. Select the directories containing your configurations files and the firmware as source and destination, respectively. Select "Pull Up" as the input mode, and "Row" as the input axis. Clicking on the 'generate' button will generate C++ code from your configurations files, and write it to the firmware directory.
 
@@ -91,12 +78,11 @@ Open the firmware using the Teensyduino program by clicking on the qbf.ino file.
 
 You should now find that the keypad operates as a number pad connected to your computer.
 
-#<a name="Adding a Second Layer"/>
-####Adding a Second Layer
+#### Adding a Second Layer
 
 Let's alter the layout to add function keys on a second layer. Extra layers are a common feature of ergonomic keyboards, but not usually found on standard keyboards. In order to access a second layer, we'll substitute a layer action for the * action on the lower left key.
 
-#####layout.txt
+##### layout.txt
 ```
 ## Number pad layer
 1   2   3
@@ -115,8 +101,7 @@ The layer switching action is indicated by ```>1``` Regenerating the C++ code an
 
 You'll notice that it's not possible to get f10 to register. This is because of a phenomenon known as 'masking', the * key is masking the 0 key's press. The keypad unit is only designed for single keypresses. More sophisticated keypads use diodes in the matrix to prevent masking and allow for multiple keypresses (shifted keypresses for example).
 
-#<a name="Defining New Actions"/>
-####Defining New Actions
+#### Defining New Actions
 
 The full list of built-in actions can be found in the following file: [Default Keys](https://raw.githubusercontent.com/barrysims/quickbrownfox-codegen/master/src/main/resources/layouts/default-keys.txt "Default Keys")
 
@@ -168,8 +153,7 @@ s_
 holdAndRelease s_ >2 sp
 ```
 
-#<a name="Configuring a Switch Matrix"/>
-####Configuring a Switch Matrix
+#### Configuring a Switch Matrix
 Keyboards such as the number pad we've already seen use switch matrices to minimise the number of output pins that are needed to capture keypresses.
 For a great introduction to switch matrices, take a look at http://www.dribin.org/dave/keyboard/one_html/
 
@@ -177,7 +161,7 @@ In the case of the number pad, the layout of the switch matrix followed the layo
 
 Here's a real example, this is one layer of the awesome Kinesis Advantage keyboard, along with the actual mapping file you would need to produce the correct code to drive the keyboard.
 
-#####Kinesis Advantage
+##### Kinesis Advantage
 ```
 es  f1  f2  f3  f4  f5  f6  f7  f8  f9  f10 f11 f12 ps  sl  pb  kp  pg
 =   1   2   3   4   5                           6   7   8   9   0   -
