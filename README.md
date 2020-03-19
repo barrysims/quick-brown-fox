@@ -1,6 +1,6 @@
 Quick Brown Fox
 =========
-![alt text](/fox.png "Quick Brown Fox")
+![alt text](/fox.gif "Quick Brown Fox")
 
 Create DIY keyboards without writing a line of code!
 
