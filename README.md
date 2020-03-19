@@ -133,7 +133,7 @@ A special kind of action is available, which we'll call a 'hold-and-release' act
 
 For example, some one-handed keyboards exist that assign a dual function to the spacebar. When the spacebar is pressed, the entire contents of the keyboard are shifted to allow access to the other hand's keys. We can create a key that allows both a shift action and a normal spacebar action on the same key by using a hold-and-release action with shift and space.
 
-#####layout.txt
+##### layout.txt
 ```
 ##Layer 1: normal left-hand
 q  w  e  r  t
@@ -147,7 +147,7 @@ p  o  i  u  y
 /  .  ,  m  n
 s_
 ```
-#####actions.txt
+##### actions.txt
 ```
 ## A combined spacebar and layer shift action
 holdAndRelease s_ >2 sp
