@@ -80,7 +80,7 @@ You should now find that the keypad operates as a number pad connected to your c
 
 #### Adding a Second Layer
 
-Let's alter the layout to add function keys on a second layer. Extra layers are a common feature of ergonomic keyboards, but not usually found on standard keyboards. In order to access a second layer, we'll substitute a layer action for the * action on the lower left key.
+Let's alter the layout to add function keys on a second layer. Extra layers are a common feature of ergonomic keyboards, but not usually found on standard keyboards. In order to access a second layer, we'll substitute a layer action for the # action on the lower left key.
 
 ##### layout.txt
 ```
@@ -97,9 +97,9 @@ f7  f8  f9
 >1  f10  #
 ```
 
-The layer switching action is indicated by ```>1``` Regenerating the C++ code and uploading it will produce a number pad that can send function key presses whilst the * key is held down.
+The layer switching action is indicated by ```>1``` Regenerating the C++ code and uploading it will produce a number pad that can send function key presses whilst the # key is held down.
 
-You'll notice that it's not possible to get f10 to register. This is because of a phenomenon known as 'masking', the * key is masking the 0 key's press. The keypad unit is only designed for single keypresses. More sophisticated keypads use diodes in the matrix to prevent masking and allow for multiple keypresses (shifted keypresses for example).
+You'll notice that it's not possible to get f10 to register. This is because of a phenomenon known as 'masking', the # key is masking the 0 key's press. The keypad unit is only designed for single keypresses. More sophisticated keypads use diodes in the matrix to prevent masking and allow for multiple keypresses (shifted keypresses for example).
 
 #### Defining New Actions
 
