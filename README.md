@@ -103,7 +103,7 @@ You'll notice that it's not possible to get f10 to register. This is because of 
 
 #### Defining New Actions
 
-The full list of built-in actions can be found in the following file: [Default Keys](https://raw.githubusercontent.com/barrysims/quickbrownfox-codegen/master/src/main/resources/layouts/default-keys.txt "Default Keys")
+The full list of built-in actions can be found in the following file: [qbf.ino](https://github.com/barrysims/quick-brown-fox/blob/master/firmware/qbf/qbf.ino "qbf.ino")
 
 The default actions cover all of the normal keys you'd find on a keyboard, but it's possible to create other, custom actions to perform other tasks. We can define new actions in a file called actions.txt, alongside the layout and pins.
 
