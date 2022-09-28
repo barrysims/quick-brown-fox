@@ -17,8 +17,8 @@ This project is released under Creative Commons Attribution-NonCommercial 4.0
 
 ### Downloads
 
-* [Firmware](https://github.com/barrysims/quickbrownfox-firmware/archive/master.zip "Firmware")
-* [Layout Generator](https://github.com/barrysims/quickbrownfox-codegen/raw/master/bin/QuickBrownFox.jar "Generator")
+* [Firmware](https://github.com/barrysims/quick-brown-fox/blob/master/dist/0.1-SNAPSHOT/qbf.zip "Firmware")
+* [Layout Generator](https://github.com/barrysims/quick-brown-fox/blob/master/dist/0.1-SNAPSHOT/qbf-gen.jar "Generator")
 
 ### Getting Started
 
