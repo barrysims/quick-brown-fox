@@ -126,8 +126,7 @@ Once you've defined a new action in the actions file, it can be referenced in th
 
 Let's leave the number pad, and look at some other possibilities...
 
-#<a name="A Simplified One-Handed Keyboard"/>
-####A Simplified One-Handed Keyboard
+##### A Simplified One-Handed Keyboard
 
 A special kind of action is available, which we'll call a 'hold-and-release' action. These allow two actions to be mapped to a single keypress. The first action is activated when the key is pressed and held, the second is activated when the key is released, but only if no other keys have been pressed in the meantime, and only a short time has passed.
 
