@@ -13,9 +13,7 @@
 @kill_pin = @{pins.pins.collectFirst{case k: KillPin => k}.get}
 
 @* Imports *@
-#import "Adafruit_MCP23017.h"
 #import "Pin.h"
-#import "ExpanderPin.h"
 #import "TeensyPin.h"
 
 @* Define Statements *@
@@ -31,9 +29,6 @@
 #define kill_pin @kill_pin.number
 
 const int inputAxis = @pins.inputAxis;
-
-Adafruit_MCP23017 pins0;
-Adafruit_MCP23017 pins1;
 
 @for(pin <- expanderPins) {
 ExpanderPin @(pin.name) = ExpanderPin(@(pin.number), &pins@(pin.chip));}

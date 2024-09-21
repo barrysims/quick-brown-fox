@@ -51,11 +51,11 @@ Action * Key::pressedAction() {
 }
 
 short Key::modCode() {
-    actions[pressedLayer]->modCode();
+    return actions[pressedLayer]->modCode();
 }
 
 bool Key::timerReady() {
-    actions[pressedLayer]->timerReady(millisSincePress);
+    return actions[pressedLayer]->timerReady(millisSincePress);
 }
 
 void Key::activateOnTimer() {

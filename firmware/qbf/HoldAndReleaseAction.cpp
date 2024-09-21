@@ -14,6 +14,10 @@ HoldAndReleaseAction::HoldAndReleaseAction(Action * _holdAction, Action * _relea
     timeout = _timeout;
 };
 
+int HoldAndReleaseAction::modCode() {
+    return holdAction->modCode();
+};
+
 void HoldAndReleaseAction::activate(elapsedMillis time) {
     holdAction->activate(time);
     Action::activate(time);

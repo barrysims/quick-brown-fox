@@ -14,7 +14,7 @@ class Action {
   public:
     Action();
     bool isActive();
-    virtual signed short modCode() { return 0; }
+    virtual int modCode() { return 0; }
     virtual bool shouldBuffer() { return false; }
     virtual bool timerReady(elapsedMillis time) { return false; }
     virtual void activateOnTimer(elapsedMillis time) {}

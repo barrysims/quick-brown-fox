@@ -1,9 +1,7 @@
 #include <Arduino.h>
 #include <StackList.h>
 #include <Wire.h>
-#include <Adafruit_MCP23017.h>
 
-#include "ExpanderPin.h"
 #include "TeensyPin.h"
 #include "Action.h"
 #include "Key.h"
@@ -24,7 +22,7 @@
 
 byte defaultLayer = 0;
 byte activeLayer = defaultLayer;
-short modifierCode = 0;
+int modifierCode = 0;
 bool clearMod = false;
 Action * lastPressed;
 KeyBuffer keyBuffer;
@@ -102,7 +100,7 @@ void updateKey(byte r, byte c, boolean p) {
 * Scan the matrix, aggregating the modifiers of each active Action.
 */
 void updateModifierCode() {
-    short modCode = 0;
+    int modCode = 0;
     for (byte c = 0; c < cols; c++) {
         for (byte r = 0; r < rows; r++) {
             Key * key = layout[r][c];
@@ -112,24 +110,6 @@ void updateModifierCode() {
     if (modifierCode != modCode) {
         modifierCode = modCode;
         sendModifier(modCode);
-    }
-}
-
-void writeToPin(byte pin, bool state) {
-    byte chip = (pin > 15)? 1 : 0;
-    if (chip == 1) {
-        pins1.digitalWrite(pin - 16, state);
-    } else {
-        pins0.digitalWrite(pin, state);
-    }
-}
-
-byte readFromPin(byte pin) {
-    byte chip = (pin > 15)? 1 : 0;
-    if (chip == 1) {
-        return pins1.digitalRead(pin - 16);
-    } else {
-        return pins0.digitalRead(pin);
     }
 }
 
@@ -157,7 +137,7 @@ void printKey(char val) {
 /*
 * Sets modifier (SHIFT, CTRL etc)
 */
-void sendModifier(short modCode) {
+void sendModifier(int modCode) {
     Keyboard.set_modifier(modCode);
     Keyboard.send_now();
 }
@@ -175,8 +155,6 @@ void swapCtrlSuper() {
 * This implementation is brittle and should be refactored to not include the names of the actions
 */
 void swapLayers(int * layerIds, int index) {
-    Serial.println("swap");
-
     int newLayer = *(layerIds + index);
     Serial.println(newLayer);
     switch (* layerIds) {
