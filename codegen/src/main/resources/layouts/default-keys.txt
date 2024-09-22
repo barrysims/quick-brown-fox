@@ -138,7 +138,6 @@ string * *
 string - -
 string $ $
 string ` `
-string ~ ~
 
 default psc KEY_PRINTSCREEN
 default slk KEY_SCROLL_LOCK

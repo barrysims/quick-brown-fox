@@ -9,7 +9,10 @@ import org.rogach.scallop._
 
 /**
  * Command Line argument config
- * example usage: java -jar qbf-gen.jar -r "layout" "qbf"
+ *
+ * build usind 'assembly'
+ *
+ * example usage from jar directory in dist: java -jar qbf-gen.jar -r "...\quick-brown-fox\layout" "...\quick-brown-fox\firmware\qbf"
  */
 class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
   val pullup = opt(name = "pullup", short = 'p', descr = "Use pullup resistors", default = Some(false))

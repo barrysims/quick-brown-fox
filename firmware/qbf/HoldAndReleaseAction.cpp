@@ -14,7 +14,7 @@ HoldAndReleaseAction::HoldAndReleaseAction(Action * _holdAction, Action * _relea
     timeout = _timeout;
 };
 
-int HoldAndReleaseAction::modCode() {
+short HoldAndReleaseAction::modCode() {
     return holdAction->modCode();
 };
 

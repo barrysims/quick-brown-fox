@@ -20,7 +20,7 @@ class HoldAndReleaseAction: public Action {
         bool _buffer);
     void activate(elapsedMillis time);
     void deactivate(elapsedMillis time);
-    int modCode();
+    short modCode();
     bool shouldBuffer() {
         return buffer;
     }

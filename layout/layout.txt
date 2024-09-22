@@ -1,0 +1,20 @@
+## Dvorak modified (layer 0)
+#   '   -   .   <>  @           }   {}  =   /\  "   bt
+[]  es  q   u   p   y           f   g   c   r   l   dl
+()_ a_  o_  e_  i_  ,           d   h_  t_  n_  s_  →_
+↓↓  tb  z   j   k   x           b   m   w   v   db  ↑↑
+                    lt          rt
+
+## Symbols (layer 1)
+f1  f2  f3  f4  f5  f6          f7  f8  f9  f10 f11 f12
+ti  _   +   &   |   @           !   7   8   9   ^   ..
+<-  <   :t  _=  {   >           *   4   5   6   ,   =>
+->  ;   *   %   $   #           ?   1   2   3   ds  al
+                    lt          0
+
+## Arrows (layer 2)
+..  ..  ..  ..  ..  ..          ←←  s←  s↓  s→  →→  ..
+..  ..  ..  ..  cw  ..          s←← sc← s↑  sc→ s→→ dl
+cu  s←← sc← s↑  sc→ s→→         ←←  c←  ↑   c→  →→  ..
+..  cp  s←  s↓  s→  ..          ..  ←   ↓   →   bs  ..
+                    lt          rt

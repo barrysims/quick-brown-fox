@@ -54,7 +54,9 @@ void pins() {
     pinMode(@kill_pin.number, INPUT_PULLUP);
 @if(pins.activeMode == "INPUT") {
 @for(pin <- teensyPins if pins.inputAxis == pin.axis.toUpperCase) {
-    pinMode(@pin.number, INPUT);}}
+    pinMode(@pin.number, INPUT);}
+@for(pin <- teensyPins if pins.inputAxis != pin.axis.toUpperCase) {
+     pinMode(@pin.number, OUTPUT);}}
 }
 
 @* Array Statements *@

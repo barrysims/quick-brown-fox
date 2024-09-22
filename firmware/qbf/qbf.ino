@@ -137,7 +137,7 @@ void printKey(char val) {
 /*
 * Sets modifier (SHIFT, CTRL etc)
 */
-void sendModifier(int modCode) {
+void sendModifier(short modCode) {
     Keyboard.set_modifier(modCode);
     Keyboard.send_now();
 }
